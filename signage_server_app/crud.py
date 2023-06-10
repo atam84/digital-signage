@@ -17,7 +17,7 @@ import os
 curdir = os.path.dirname(os.path.realpath(__file__))
 
 # Only listen to these endpoints
-endpoints = ["displays", "content", "playlists"]
+endpoints = ["displays", "content", "playlists", "logos", "messages"]
 # Load item templates to use when checking for valid items
 with open(os.path.join(curdir, "data", "item_templates.yaml"), 'r') as f:
     item_templates = yaml.load(f.read(), Loader=yaml.SafeLoader)

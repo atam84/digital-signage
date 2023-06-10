@@ -13,7 +13,7 @@ for file in os.listdir(os.path.join(curdir, "templates", "snippets")):
             snippets[os.path.splitext(file)[0]] = Markup(f.read())
 
 # Only listen to these endpoints
-endpoints = ["displays", "content", "playlists"]
+endpoints = ["displays", "content", "playlists", "logos", "messages"]
 
 
 # --- HTML Pages ---

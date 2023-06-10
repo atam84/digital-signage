@@ -105,7 +105,7 @@ function getTable(refresh) {
         {
           title: "ID",
           data: "id",
-          visible: false
+          visible: true
         },
         {
           title: "Name",
@@ -263,7 +263,8 @@ $('#displayModalSave').on('click', function(e) {
     "name": $('#displayName').val(),
     "active": $('#displayActive').is(":checked"),
     "updated": now.toISOString(),
-    "showing": null
+    "showing": null,
+    "logo": null
   }
   if (editDisplayId == null) {
     // POST a new display

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ head }}
+    <title>Signage Server</title>
+  </head>
+  <body>
+    {{ navbar_main }}
+
+    <div class="container container-main">
+      <div class="row">
+        <div class="alert" id="alertBox"></div>
+      </div>
+      <div class="row">
+        <div class="col" style="text-align: center;">
+          <h3 class="page-title">Logos</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <table class="table" id="logoTable"></table>
+        </div>
+      </div>
+    </div>
+
+    {{ logos_modal }}
+
+    {{ logo_publish_modal }}
+
+    {{ are_you_sure_modal }}
+
+    <!-- Custom JS -->
+    <script src="/static/js/admin_logos.js" type="text/javascript"></script>
+  </body>
+</html>

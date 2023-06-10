@@ -1,0 +1,51 @@
+<!-- logo Modal -->
+<div class="modal fade" id="logoModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Logo Details</h4>
+        <button type="button" class="close" data-dismiss="modal" id="logoModalX">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container"> 
+          <form id="logoForm" enctype="multipart/form-data">         
+            <div class="row" style="margin-bottom: 30px;">
+              <div class="col">
+                <label for="logoName" class="control-label">Name: </label>
+                <input type="text" id="logoName" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input type="file" id="logoUpload" class="input" style="margin-left: 25px;">
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col" style="text-align: center;">
+              <p id="logoUploadText" style="color: red; white-space: pre-line;"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-8" style="text-align: right;">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="logoModalClose">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="logoModalSave" disabled="true">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

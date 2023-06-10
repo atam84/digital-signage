@@ -3,6 +3,8 @@ displays:
   active: true
   updated: str
   showing: {}
+  logo: {}
+  messages: {}
 content:
   name: str
   type: str
@@ -15,6 +17,28 @@ playlists:
   name: str
   type: str
   random: true
+  tracks:
+    - seq: 0
+      duration: 0
+      track: {}
+logos:
+  name: str
+  type: str
+  size: 0
+  resolution: str
+  file: str
+  thumb: str
+  screen_position_y: 0
+  screen_position_x: 0
+  logo_w: 55
+  logo_h: 55
+  animation: str
+  animation_duration: 10
+  repeat_animation: true
+messages:
+  name: str
+  type: str
+  random: false
   tracks:
     - seq: 0
       duration: 0
