@@ -90,12 +90,18 @@ router.delete('/:id', async (req, res) => {
       return res.status(404).json({ error: 'Widget not found' })
     }
     
-    // Run after actions
-    if (WidgetHelper.deleteWidget) {
-      await WidgetHelper.deleteWidget(req, res, () => {})
+    // Remove widget from display if it has a display reference
+    if (widget.display) {
+      const display = await Display.findById(widget.display)
+      if (display) {
+        display.widgets = display.widgets.filter(widgetId => !widgetId.equals(widget._id))
+        await display.save()
+      }
     }
-    if (CommonHelper.broadcastUpdateMiddleware) {
-      await CommonHelper.broadcastUpdateMiddleware(req, res, () => {})
+    
+    // Broadcast update
+    if (CommonHelper.broadcastUpdate) {
+      CommonHelper.broadcastUpdate(res.io)
     }
     
     res.json({ message: 'Widget deleted successfully' })

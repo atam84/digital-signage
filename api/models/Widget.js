@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
-const widgetList = require('../../widgets/widget_list')
 const Schema = mongoose.Schema
+
+// Get widget list dynamically
+const widgetList = require('../../widgets/widget_list')
+console.log('Widget model loaded with widget list:', widgetList)
 
 const Widget = new Schema({
   type: { type: String, enum: widgetList },
@@ -11,5 +14,10 @@ const Widget = new Schema({
   data: { type: Schema.Types.Mixed },
   display: { type: Schema.Types.ObjectId, ref: 'Display' }
 })
+
+// Clear any existing model to force recreation
+if (mongoose.models.Widget) {
+  delete mongoose.models.Widget
+}
 
 module.exports = mongoose.model('Widget', Widget)
