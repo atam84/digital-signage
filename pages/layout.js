@@ -98,7 +98,7 @@ class Layout extends React.Component {
             <input
               className='input'
               placeholder='Unnamed display'
-              value={display && display.name}
+              value={display && display.name || ''}
               onChange={event => {
                 const target = event.target
                 const title = target && target.value
@@ -147,6 +147,7 @@ class Layout extends React.Component {
                   >
                     {display.statusBar.map((item, index) => (
                       <StatusBarElement
+                        key={item.id || index}
                         item={item}
                         index={index}
                         onDelete={display.removeStatusBarItem.bind(this, index)}

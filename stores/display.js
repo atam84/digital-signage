@@ -10,7 +10,7 @@ const updateDisplayThrottled = _.debounce((id, data) => {
 
 const display = store({
   id: null,
-  name: null,
+  name: '',
   layout: null,
   statusBar: null,
   widgets: null,

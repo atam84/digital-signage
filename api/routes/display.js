@@ -35,9 +35,18 @@ router
 router
   .get('/:id', (req, res, next) => {
     const { id } = req.params
+    
+    // Handle null or invalid IDs
+    if (!id || id === 'null' || id === 'undefined') {
+      return res.status(400).json({ error: 'Invalid display ID' })
+    }
+    
     return Display.findById(id)
       .populate('widgets')
       .then(display => {
+        if (!display) {
+          return res.status(404).json({ error: 'Display not found' })
+        }
         return res.json(display)
       })
       .catch(err => next(err))
