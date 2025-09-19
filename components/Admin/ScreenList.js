@@ -42,8 +42,8 @@ class ScreenList extends Component {
             ))
           : Array(4)
               .fill()
-              .map(() => (
-                <ContentLoader height={120} width={640}>
+              .map((_, index) => (
+                <ContentLoader key={`loader-${index}`} height={120} width={640}>
                   <rect x='0' y='0' rx='5' ry='5' width='100%' height='80' />
                 </ContentLoader>
               ))}

@@ -85,11 +85,33 @@
 - **Solution**: Replaced mongoose-crudify with custom CRUD implementation
 - **Files Modified**: `api/routes/widgets.js`
 
+## Additional Issues Fixed (v1.0.0b - Part 2)
+
+### 14. Missing Key Props in ScreenList Component
+- **Issue**: ContentLoader components in ScreenList missing key props
+- **Solution**: Added key props to ContentLoader components in loading state
+- **Files Modified**: `components/Admin/ScreenList.js`
+
+### 15. Missing Key Props in Frame Component
+- **Issue**: statusBar.map items missing key props in Display Frame
+- **Solution**: Added unique key props to status bar items
+- **Files Modified**: `components/Display/Frame.js`
+
+### 16. Missing Key Props in Widget Components
+- **Issue**: text.split('\n').map items missing key props in CongratsContent and AnnouncementContent
+- **Solution**: Added key props to mapped text lines
+- **Files Modified**: `widgets/congrats/src/CongratsContent.js`, `widgets/announcement/src/AnnouncementContent.js`
+
+### 17. Invalid FontAwesome Icon Size
+- **Issue**: Invalid `size` prop value `'0.4x'` for FontAwesomeIcon
+- **Solution**: Changed to valid size value `'xs'`
+- **Files Modified**: `widgets/announcement/src/AnnouncementContent.js`
+
 ## Remaining Warnings (Non-Critical)
 
 ### 1. Deprecated Lifecycle Methods
 - **Warning**: `componentWillReceiveProps` has been renamed
-- **Components**: ReactGridLayout, Switch
+- **Components**: ReactGridLayout, Switch, Lottie
 - **Status**: Non-breaking, from external packages
 - **Action**: No action required (external package warnings)
 
@@ -102,6 +124,11 @@
 - **Warning**: `collection.ensureIndex` is deprecated, use `createIndexes` instead
 - **Warning**: `findOneAndUpdate()` without `useFindAndModify` option
 - **Status**: Non-breaking, functional warnings
+- **Action**: Can be addressed in future updates
+
+### 4. Hydration Mismatch Warning
+- **Warning**: "Did not expect server HTML to contain a `<div>` in `<div>`"
+- **Status**: Non-breaking, minor hydration issue
 - **Action**: Can be addressed in future updates
 
 ## Development Environment Setup

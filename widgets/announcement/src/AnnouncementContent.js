@@ -37,14 +37,14 @@ class AnnouncementContent extends Component {
       <div className='announce'>
         <div className='title'>
           <div className='icon'>
-            <FontAwesomeIcon icon={'exclamation-triangle'} size={'0.4x'} color={accentColor} />
+            <FontAwesomeIcon icon={'exclamation-triangle'} size={'xs'} color={accentColor} />
           </div>
           <span>Announcement</span>
         </div>
         <AutoScroll style={{ display: 'block' }}>
           <div className='text'>
-            {text.split('\n').map(line => (
-              <div>{line || <br />}</div>
+            {text.split('\n').map((line, index) => (
+              <div key={`line-${index}`}>{line || <br />}</div>
             ))}
           </div>
         </AutoScroll>

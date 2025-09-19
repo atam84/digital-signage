@@ -19,10 +19,10 @@ class Frame extends React.Component {
       <div className='display'>
         {statusBar && statusBar.length > 0 && (
           <div className={'status'}>
-            {statusBar.map(item => {
+            {statusBar.map((item, index) => {
               const type = item.split('_')[0]
               return (
-                <div className={type}>
+                <div key={`status-${index}-${type}`} className={type}>
                   {type == 'date' ? (
                     <Clock ticking={true} format={'dddd, MMMM Do.'} />
                   ) : type == 'connection' ? (
