@@ -225,6 +225,11 @@
 - **Last Updated**: January 2025
 - **Version**: 1.0.0b
 
+## Development Preferences
+- **IMPORTANT**: Do NOT commit changes automatically - only commit when explicitly requested by user
+- Always ask for permission before committing to git
+- Make changes and wait for user approval before git operations
+
 ## Notes for Next Session
 - Application is fully functional on port 9900
 - All critical errors have been resolved
