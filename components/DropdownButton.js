@@ -67,23 +67,64 @@ class DropdownButton extends Component {
             }}
             style={menuStyle}
           >
-            {choices.map(choice => (
-              <button
-                key={choice.key}
-                className={'choice'}
-                onClick={event => {
-                  this.closeMenu(event, true /* force */)
-                  onSelect(choice.key)
-                }}
-              >
-                {choice.icon && (
-                  <div className={'btnIcon'}>
-                    <FontAwesomeIcon icon={choice.icon} prefix={'fab'} />
+            {choices.map(choice => {
+              if (choice.type === 'category' && choice.children) {
+                // Render category with submenu
+                return (
+                  <div key={choice.key} className={'category'}>
+                    <div className={'categoryHeader'}>
+                      {choice.icon && (
+                        <div className={'btnIcon'}>
+                          <FontAwesomeIcon icon={choice.icon} />
+                        </div>
+                      )}
+                      {choice.name}
+                      <div className={'arrow'}>
+                        <FontAwesomeIcon icon={'chevron-right'} />
+                      </div>
+                    </div>
+                    <div className={'submenu'}>
+                      {choice.children.map(child => (
+                        <button
+                          key={child.key}
+                          className={'choice subchoice'}
+                          onClick={event => {
+                            this.closeMenu(event, true /* force */)
+                            onSelect(child.key)
+                          }}
+                        >
+                          {child.icon && (
+                            <div className={'btnIcon'}>
+                              <FontAwesomeIcon icon={child.icon} />
+                            </div>
+                          )}
+                          {child.name}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                )}
-                {choice.name}
-              </button>
-            ))}
+                )
+              } else {
+                // Render regular choice
+                return (
+                  <button
+                    key={choice.key}
+                    className={'choice'}
+                    onClick={event => {
+                      this.closeMenu(event, true /* force */)
+                      onSelect(choice.key)
+                    }}
+                  >
+                    {choice.icon && (
+                      <div className={'btnIcon'}>
+                        <FontAwesomeIcon icon={choice.icon} />
+                      </div>
+                    )}
+                    {choice.name}
+                  </button>
+                )
+              }
+            })}
           </div>
         ) : null}
         <style jsx>
@@ -150,6 +191,49 @@ class DropdownButton extends Component {
             }
             .choice:last-child {
               border-bottom: 0px;
+            }
+            .category {
+              position: relative;
+            }
+            .categoryHeader {
+              display: flex;
+              align-items: center;
+              padding: 12px 16px;
+              color: #333;
+              font-weight: 600;
+              border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+              cursor: pointer;
+            }
+            .categoryHeader:hover {
+              background-color: rgba(123, 192, 67, 0.1);
+            }
+            .categoryHeader .arrow {
+              margin-left: auto;
+              font-size: 12px;
+              color: #666;
+            }
+            .submenu {
+              display: none;
+              position: absolute;
+              left: 100%;
+              top: 0;
+              background: white;
+              border: 1px solid rgba(0, 0, 0, 0.1);
+              border-radius: 4px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              min-width: 200px;
+              z-index: 1000;
+            }
+            .category:hover .submenu {
+              display: block;
+            }
+            .subchoice {
+              padding: 12px 16px;
+              font-weight: normal;
+              border-bottom: none;
+            }
+            .subchoice:last-child {
+              border-bottom: none;
             }
           `}
         </style>

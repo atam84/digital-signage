@@ -7,7 +7,7 @@
 import React, { Component } from 'react'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import getVideoId from 'get-video-id'
-import YouTube from 'react-youtube'
+import VideoContainer from '../../../components/VideoContainer'
 
 config.autoAddCss = false
 
@@ -34,32 +34,19 @@ class YoutubeContent extends Component {
           {!id || service !== 'youtube' ? (
             <div>Invalid Youtube URL</div>
           ) : (
-            <YouTube
-              containerClassName={'youtube-container-nojsx'}
-              videoId={id}
-              opts={{
-                /* eslint-disable camelcase */
-                height: '100%',
-                width: '100%',
-                playerVars: {
-                  autoplay: 1,
-                  controls: 0,
-                  start: 0,
-                  cc_load_policy: 0,
-                  fs: 0,
-                  iv_load_policy: 3,
-                  modestbranding: 1,
-                  rel: 0,
-                  showinfo: 0
-                }
-                /* eslint-enable camelcase */
-              }}
+            <VideoContainer
+              src={`https://www.youtube.com/embed/${id}`}
+              platform="youtube"
+              autoplay={true}
+              muted={true}
+              loop={false}
+              className="youtube-video-container"
             />
           )}
         </div>
         <style>
           {`
-                .youtube-container-nojsx {
+                .youtube-video-container {
                   width: 100%;
                   height: 100%;
                   min-height: 100%;

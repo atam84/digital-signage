@@ -4,6 +4,7 @@
  */
 
 import GenericSlide from './Generic'
+import VideoContainer from '../../../components/VideoContainer'
 
 class WebSlide extends GenericSlide {
   constructor(props) {
@@ -21,13 +22,10 @@ class WebSlide extends GenericSlide {
    */
   renderSlideContent(data) {
     return (
-      <iframe
-        width='100%'
-        height='100%'
+      <VideoContainer
         src={data}
-        frameborder='0'
-        allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-        allowfullscreen
+        platform="web"
+        className="web-slide-container"
       />
     )
   }

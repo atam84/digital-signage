@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import VideoContainer from '../../../components/VideoContainer'
 
 class MixedPlaylistContent extends Component {
   constructor(props) {
@@ -406,13 +407,13 @@ class MixedPlaylistContent extends Component {
       case 'youtube_shorts':
         return (
           <div className="youtube-content">
-            <iframe
-              src={`https://www.youtube.com/embed/${contentId}?autoplay=${platformConfig.autoplay ? 1 : 0}&controls=${platformConfig.controls ? 1 : 0}&mute=${platformConfig.mute ? 1 : 0}&loop=${platformConfig.loop ? 1 : 0}`}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+            <VideoContainer
+              src={`https://www.youtube.com/embed/${contentId}`}
+              platform={platform}
+              autoplay={platformConfig.autoplay || false}
+              muted={platformConfig.mute || false}
+              loop={platformConfig.loop || false}
+              className="mixed-playlist-youtube"
             />
           </div>
         )
@@ -420,28 +421,21 @@ class MixedPlaylistContent extends Component {
       case 'tiktok':
         return (
           <div className="tiktok-content">
-            <blockquote
-              className="tiktok-embed"
-              cite={`https://www.tiktok.com/@tiktok/video/${contentId}`}
-              data-video-id={contentId}
-              style={{ maxWidth: '605px', minWidth: '325px' }}
-            >
-              <section>
-                <a target="_blank" title={`@tiktok`} href={`https://www.tiktok.com/@tiktok/video/${contentId}`}>
-                  @tiktok
-                </a>
-              </section>
-            </blockquote>
+            <VideoContainer
+              src={`https://www.tiktok.com/@tiktok/video/${contentId}`}
+              platform="tiktok"
+              className="mixed-playlist-tiktok"
+            />
           </div>
         )
 
       case 'instagram':
         return (
           <div className="instagram-content">
-            <blockquote
-              className="instagram-media"
-              data-instgrm-permalink={`https://www.instagram.com/p/${contentId}/`}
-              data-instgrm-version="14"
+            <VideoContainer
+              src={`https://www.instagram.com/p/${contentId}/`}
+              platform="instagram"
+              className="mixed-playlist-instagram"
             />
           </div>
         )
@@ -449,18 +443,21 @@ class MixedPlaylistContent extends Component {
       case 'facebook':
         return (
           <div className="facebook-content">
-            <div className="fb-post" data-href={`https://www.facebook.com/posts/${contentId}`} />
+            <VideoContainer
+              src={`https://www.facebook.com/posts/${contentId}`}
+              platform="facebook"
+              className="mixed-playlist-facebook"
+            />
           </div>
         )
 
       case 'reddit':
         return (
           <div className="reddit-content">
-            <iframe
+            <VideoContainer
               src={`https://www.redditmedia.com/r/${metadata?.subreddit || 'popular'}/comments/${contentId}/?embed=true`}
-              width="100%"
-              height="400"
-              frameBorder="0"
+              platform="web"
+              className="mixed-playlist-reddit"
             />
           </div>
         )
@@ -488,12 +485,10 @@ class MixedPlaylistContent extends Component {
       case 'web':
         return (
           <div className="web-content">
-            <iframe
+            <VideoContainer
               src={contentId}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              sandbox="allow-scripts allow-same-origin allow-presentation"
+              platform="web"
+              className="mixed-playlist-web"
             />
           </div>
         )
@@ -814,8 +809,7 @@ class MixedPlaylistContent extends Component {
           {this.renderContentItem(currentItem)}
         </div>
         
-        {/* Controls */}
-        {this.renderControls()}
+        {/* Controls removed for signage use */}
 
         <style jsx>{`
           .mixed-playlist-widget {

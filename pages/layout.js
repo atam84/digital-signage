@@ -20,6 +20,7 @@ import Widgets from '../widgets'
 import { addWidget, getWidgets, deleteWidget, updateWidget } from '../actions/widgets'
 import { protect } from '../helpers/auth.js'
 import { display } from '../stores'
+import { getWidgetsByCategory } from '../widgets/widget_categories'
 
 const GridLayoutWithWidth = WidthProvider(GridLayout)
 
@@ -165,10 +166,17 @@ class Layout extends React.Component {
             icon='plus'
             text='Add Widget'
             onSelect={this.addWidget}
-            choices={Object.keys(Widgets).map(widget => ({
-              key: widget,
-              name: Widgets[widget].name,
-              icon: Widgets[widget].icon
+            choices={getWidgetsByCategory().map(category => ({
+              key: category.name,
+              name: category.name,
+              icon: category.icon,
+              type: 'category',
+              children: category.widgets.map(widget => ({
+                key: widget,
+                name: Widgets[widget]?.name || widget,
+                icon: Widgets[widget]?.icon || 'square',
+                type: 'widget'
+              }))
             }))}
           />
           <Form>

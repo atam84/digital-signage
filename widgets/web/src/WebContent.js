@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react'
 import { config } from '@fortawesome/fontawesome-svg-core'
+import VideoContainer from '../../../components/VideoContainer'
 
 config.autoAddCss = false
 
@@ -28,7 +29,11 @@ class WebContent extends Component {
           </div>
         )}
         <div className='iframeContainer'>
-          <iframe src={url} className='iframe' ref={this.iframe} />
+          <VideoContainer
+            src={url}
+            platform="web"
+            className="web-iframe-container"
+          />
         </div>
         <style jsx>
           {`
@@ -48,7 +53,7 @@ class WebContent extends Component {
               border: none;
               overflow: hidden;
             }
-            .web .iframe {
+            .web-iframe-container {
               flex: 1;
               border: none;
               width: 100%;
