@@ -49,6 +49,11 @@
 ### 🚀 **Next Development Phase**
 Ready to continue with additional social media widgets and advanced features.
 
+### 📚 **Research Documentation**
+- **API Research Document**: `docs/SOCIAL_MEDIA_API_RESEARCH.md` - Comprehensive analysis of all social media platform APIs
+- **Implementation Guide**: `docs/IMPLEMENTATION_GUIDE.md` - Technical implementation templates and patterns
+- **Platform Priority**: TikTok → Reddit → Facebook → X → Instagram → LinkedIn
+
 ---
 
 ## 🚀 Planned Widgets Development
