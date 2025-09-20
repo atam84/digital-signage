@@ -4,14 +4,14 @@
 - **Project**: Digital Signage Application
 - **Version**: 1.0.3b
 - **Repository**: git@github.com:atam84/digital-signage.git
-- **Current Widgets**: 18 implemented
+- **Current Widgets**: 19 implemented
 - **Target Widgets**: 24+ planned
 
 ---
 
 ## 📊 Current Widgets Status
 
-### ✅ **Implemented Widgets (18/18)**
+### ✅ **Implemented Widgets (19/19)**
 
 | Widget | Status | Version | Icon | Description |
 |--------|--------|---------|------|-------------|
@@ -33,6 +33,7 @@
 | 🔗 Reddit | ✅ Complete | 0.1 | reddit | Reddit posts feed with trending content and auto-refresh |
 | 📘 Facebook | ✅ Complete | 0.1 | facebook | Facebook posts feed with Graph API integration and embed support |
 | 🐦 X (Twitter) | ✅ Complete | 0.1 | twitter | X/Twitter tweets feed with API v2 integration and real-time streaming |
+| 📷 Instagram | ✅ Complete | 0.1 | instagram | Instagram posts feed with grid layout and embed support |
 
 ---
 
@@ -45,7 +46,7 @@
 - **All Critical Issues Resolved**: Widget loading, display association, and compilation errors fixed
 
 ### 📊 **Current Status**
-- **Total Widgets**: 18/24+ (75% complete)
+- **Total Widgets**: 19/24+ (79% complete)
 - **System Stability**: ✅ Stable release
 - **API Endpoints**: ✅ All operational
 - **Database Models**: ✅ All working correctly
