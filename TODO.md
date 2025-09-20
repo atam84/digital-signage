@@ -4,14 +4,14 @@
 - **Project**: Digital Signage Application
 - **Version**: 1.0.3b
 - **Repository**: git@github.com:atam84/digital-signage.git
-- **Current Widgets**: 16 implemented
+- **Current Widgets**: 17 implemented
 - **Target Widgets**: 24+ planned
 
 ---
 
 ## 📊 Current Widgets Status
 
-### ✅ **Implemented Widgets (16/16)**
+### ✅ **Implemented Widgets (17/17)**
 
 | Widget | Status | Version | Icon | Description |
 |--------|--------|---------|------|-------------|
@@ -31,6 +31,7 @@
 | 🎬 YouTube Shorts | ✅ Complete | 0.1 | play | YouTube Shorts player with playlist management and auto-play |
 | 📱 TikTok | ✅ Complete | 0.1 | play | TikTok video player with auto-swipe and playlist support |
 | 🔗 Reddit | ✅ Complete | 0.1 | reddit | Reddit posts feed with trending content and auto-refresh |
+| 📘 Facebook | ✅ Complete | 0.1 | facebook | Facebook posts feed with Graph API integration and embed support |
 
 ---
 
@@ -43,7 +44,7 @@
 - **All Critical Issues Resolved**: Widget loading, display association, and compilation errors fixed
 
 ### 📊 **Current Status**
-- **Total Widgets**: 16/24+ (67% complete)
+- **Total Widgets**: 17/24+ (71% complete)
 - **System Stability**: ✅ Stable release
 - **API Endpoints**: ✅ All operational
 - **Database Models**: ✅ All working correctly
