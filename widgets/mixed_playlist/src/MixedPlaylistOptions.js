@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, ButtonGroup, Switch, ColorPicker, Select } from '../../../components/Form'
+import { Form, Input, Button, ButtonGroup, Switch, ColorPicker } from '../../../components/Form'
 import axios from 'axios'
 
 class MixedPlaylistOptions extends Component {
@@ -149,7 +149,7 @@ class MixedPlaylistOptions extends Component {
         [name]: value
       },
       () => {
-        this.props.onChange(this.state)
+        this.props.onUpdate(this.state)
       }
     )
   }
@@ -162,7 +162,7 @@ class MixedPlaylistOptions extends Component {
         [`${name}Input`]: value
       },
       () => {
-        this.props.onChange(this.state)
+        this.props.onUpdate(this.state)
       }
     )
   }
@@ -178,7 +178,7 @@ class MixedPlaylistOptions extends Component {
     }
     
     this.setState({ platformSettings: newPlatformSettings }, () => {
-      this.props.onChange(this.state)
+      this.props.onUpdate(this.state)
     })
   }
 
@@ -253,17 +253,20 @@ class MixedPlaylistOptions extends Component {
           {/* Playlist Selection */}
           <h4>Playlist Configuration</h4>
           
-          <Select
+          <Input
+            inline={false}
             label="Select Playlist"
+            type="select"
+            name="playlistId"
             value={playlistId}
-            onChange={(val) => this.handleChange('playlistId', val)}
-            options={[
-              { value: '', label: 'Select a playlist...' },
+            choices={[
+              { id: '', label: 'Select a playlist...' },
               ...availablePlaylists.map(playlist => ({
-                value: playlist._id,
+                id: playlist._id,
                 label: playlist.name
               }))
             ]}
+            onChange={this.handleChange}
           />
 
           {playlistId && (
@@ -326,15 +329,17 @@ class MixedPlaylistOptions extends Component {
             onChange={this.handleChange}
           />
 
-          <ButtonGroup
+          <Input
+            inline={false}
             label="Transition Type"
+            type="select"
             name="transitionType"
             value={transitionType}
-            options={[
-              { label: 'Fade', value: 'fade' },
-              { label: 'Slide', value: 'slide' },
-              { label: 'Zoom', value: 'zoom' },
-              { label: 'None', value: 'none' }
+            choices={[
+              { id: 'fade', label: 'Fade' },
+              { id: 'slide', label: 'Slide' },
+              { id: 'zoom', label: 'Zoom' },
+              { id: 'none', label: 'None' }
             ]}
             onChange={this.handleChange}
           />
@@ -354,55 +359,63 @@ class MixedPlaylistOptions extends Component {
           {/* Display Configuration */}
           <h4>Display Configuration</h4>
           
-          <ButtonGroup
+          <Input
+            inline={false}
             label="Display Mode"
+            type="select"
             name="displayMode"
             value={displayMode}
-            options={[
-              { label: 'Embedded', value: 'embedded' },
-              { label: 'Floating', value: 'floating' }
+            choices={[
+              { id: 'embedded', label: 'Embedded' },
+              { id: 'floating', label: 'Floating' }
             ]}
             onChange={this.handleChange}
           />
 
           {displayMode === 'floating' && (
             <>
-              <ButtonGroup
+              <Input
+                inline={false}
                 label="Floating Position"
+                type="select"
                 name="floatingPosition"
                 value={floatingPosition}
-                options={[
-                  { label: 'Center', value: 'center' },
-                  { label: 'Top Left', value: 'top-left' },
-                  { label: 'Top Right', value: 'top-right' },
-                  { label: 'Bottom Left', value: 'bottom-left' },
-                  { label: 'Bottom Right', value: 'bottom-right' }
+                choices={[
+                  { id: 'center', label: 'Center' },
+                  { id: 'top-left', label: 'Top Left' },
+                  { id: 'top-right', label: 'Top Right' },
+                  { id: 'bottom-left', label: 'Bottom Left' },
+                  { id: 'bottom-right', label: 'Bottom Right' }
                 ]}
                 onChange={this.handleChange}
               />
 
-              <ButtonGroup
+              <Input
+                inline={false}
                 label="Floating Size"
+                type="select"
                 name="floatingSize"
                 value={floatingSize}
-                options={[
-                  { label: 'Small', value: 'small' },
-                  { label: 'Medium', value: 'medium' },
-                  { label: 'Large', value: 'large' }
+                choices={[
+                  { id: 'small', label: 'Small' },
+                  { id: 'medium', label: 'Medium' },
+                  { id: 'large', label: 'Large' }
                 ]}
                 onChange={this.handleChange}
               />
             </>
           )}
 
-          <ButtonGroup
+          <Input
+            inline={false}
             label="Layout"
+            type="select"
             name="layout"
             value={layout}
-            options={[
-              { label: 'Fullscreen', value: 'fullscreen' },
-              { label: 'Grid', value: 'grid' },
-              { label: 'Carousel', value: 'carousel' }
+            choices={[
+              { id: 'fullscreen', label: 'Fullscreen' },
+              { id: 'grid', label: 'Grid' },
+              { id: 'carousel', label: 'Carousel' }
             ]}
             onChange={this.handleChange}
           />
@@ -605,15 +618,17 @@ class MixedPlaylistOptions extends Component {
             onChange={this.handleChange}
           />
 
-          <ButtonGroup
+          <Input
+            inline={false}
             label="Shadow Style"
+            type="select"
             name="shadowStyle"
             value={shadowStyle}
-            options={[
-              { label: 'None', value: 'none' },
-              { label: 'Subtle', value: 'subtle' },
-              { label: 'Medium', value: 'medium' },
-              { label: 'Strong', value: 'strong' }
+            choices={[
+              { id: 'none', label: 'None' },
+              { id: 'subtle', label: 'Subtle' },
+              { id: 'medium', label: 'Medium' },
+              { id: 'strong', label: 'Strong' }
             ]}
             onChange={this.handleChange}
           />
@@ -784,14 +799,16 @@ class MixedPlaylistOptions extends Component {
             onChange={this.handleChange}
           />
 
-          <ButtonGroup
+          <Input
+            inline={false}
             label="Animation Type"
+            type="select"
             name="animationType"
             value={animationType}
-            options={[
-              { label: 'Fade', value: 'fade' },
-              { label: 'Slide', value: 'slide' },
-              { label: 'Zoom', value: 'zoom' }
+            choices={[
+              { id: 'fade', label: 'Fade' },
+              { id: 'slide', label: 'Slide' },
+              { id: 'zoom', label: 'Zoom' }
             ]}
             onChange={this.handleChange}
           />
@@ -843,13 +860,15 @@ class MixedPlaylistOptions extends Component {
                 onChange={this.handleChange}
               />
 
-              <ButtonGroup
+              <Input
+                inline={false}
                 label="Repetition Unit"
+                type="select"
                 name="repetitionUnit"
                 value={repetitionUnit}
-                options={[
-                  { label: 'Minutes', value: 'minutes' },
-                  { label: 'Hours', value: 'hours' }
+                choices={[
+                  { id: 'minutes', label: 'Minutes' },
+                  { id: 'hours', label: 'Hours' }
                 ]}
                 onChange={this.handleChange}
               />

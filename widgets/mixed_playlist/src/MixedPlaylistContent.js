@@ -261,7 +261,7 @@ class MixedPlaylistContent extends Component {
   }
 
   renderContentItem = (item) => {
-    const { platformSettings, showPlatform, showTitle, showDescription, showThumbnail } = this.props.data
+    const { platformSettings = {}, showPlatform, showTitle, showDescription, showThumbnail } = this.props.data
     const platformConfig = platformSettings[item.platform] || {}
 
     return (
