@@ -38,37 +38,6 @@ class Frame extends React.Component {
           </div>
         )}
         {children}
-        <style jsx>
-          {`
-            .display {
-              display: flex;
-              flex-direction: column;
-              width: 100%;
-              height: 100%;
-              background: black;
-              font-family: Open Sans, sans-serif;
-              color: white;
-            }
-            .status {
-              padding: 30px;
-              display: flex;
-              flex-direction: row;
-              justify-content: flex-start;
-              align-items: center;
-            }
-            .status .spacer {
-              display: flex;
-              flex: 1;
-            }
-            .status *:not(:first-child):not(:last-child) {
-              margin-right: 8px;
-              margin-left: 8px;
-            }
-            .status .connection {
-              color: #baff23;
-            }
-          `}
-        </style>
       </div>
     )
   }

@@ -17,7 +17,15 @@ const WidgetHelper = require('../helpers/widget_helper')
 // List all widgets
 router.get('/', async (req, res) => {
   try {
-    const widgets = await Widget.find()
+    let query = {}
+    
+    // Filter by display ID if provided
+    if (req.query.display) {
+      // Since display field is stored as string, match directly
+      query.display = req.query.display
+    }
+    
+    const widgets = await Widget.find(query)
     res.json(widgets)
   } catch (error) {
     res.status(500).json({ error: error.message })

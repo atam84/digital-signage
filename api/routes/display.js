@@ -80,6 +80,7 @@ router
         if ('name' in req.body) display.name = req.body.name
         if ('layout' in req.body) display.layout = req.body.layout
         if ('statusBar' in req.body) display.statusBar = req.body.statusBar
+        if ('widgets' in req.body) display.widgets = req.body.widgets
 
         return display
           .save()

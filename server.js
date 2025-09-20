@@ -30,14 +30,26 @@ app
       next()
     })
 
-    // MongoDB
+    // MongoDB - Force fresh connection
     mongoose.Promise = Promise
+    
+    // Close any existing connections
+    if (mongoose.connection.readyState !== 0) {
+      mongoose.disconnect()
+    }
+    
     mongoose.connect(
       Keys.MONGODB_URI,
-      { useNewUrlParser: true }
+      { 
+        useNewUrlParser: true, 
+        useUnifiedTopology: true,
+        bufferCommands: false,
+        bufferMaxEntries: 0
+      }
     )
     const db = mongoose.connection
     db.on('error', console.error.bind(console, 'connection error:'))
+    db.on('connected', () => console.log('MongoDB connected successfully'))
 
     // Parse application/x-www-form-urlencoded
     server.use(bodyParser.urlencoded({ extended: false }))

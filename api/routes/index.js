@@ -6,5 +6,6 @@ router.use('/slideshow', require('./slideshow'))
 router.use('/display', require('./display'))
 router.use('/user', require('./user'))
 router.use('/widgets', require('./widgets'))
+router.use('/playlists', require('./playlists'))
 
 module.exports = router
