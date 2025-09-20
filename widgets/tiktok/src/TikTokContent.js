@@ -314,6 +314,7 @@ class TikTokContent extends Component {
       <div 
         ref={this.containerRef}
         className={`tiktok-widget ${displayMode}`}
+        data-aspect={aspectRatio}
         style={{
           backgroundColor,
           borderColor,
@@ -422,23 +423,26 @@ class TikTokContent extends Component {
             text-align: center;
           }
           
-          /* Aspect ratio handling */
+          /* Aspect ratio handling - fit to container height */
           .tiktok-widget[data-aspect="9:16"] .tiktok-content {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
             aspect-ratio: 9/16;
-            max-width: 400px;
-            margin: 0 auto;
           }
           
           .tiktok-widget[data-aspect="16:9"] .tiktok-content {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
             aspect-ratio: 16/9;
-            max-width: 800px;
-            margin: 0 auto;
           }
           
           .tiktok-widget[data-aspect="1:1"] .tiktok-content {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
             aspect-ratio: 1/1;
-            max-width: 500px;
-            margin: 0 auto;
           }
         `}</style>
       </div>
